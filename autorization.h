@@ -2,6 +2,7 @@
 #define AUTORIZATION_H
 
 #include <QDialog>
+#include "mainwindow.h"
 
 namespace Ui {
 class Autorization;
@@ -15,11 +16,17 @@ public:
     explicit Autorization(QWidget *parent = nullptr);
     ~Autorization();
     bool auth();
-    void on_pushButton_clicked();
     std::map<QString,QString> logins;
+
+signals:
+    void showMain();
 
 private:
     Ui::Autorization *ui;
+    MainWindow *m;
+
+private slots:
+    void on_pushButton_clicked();
 };
 
 #endif // AUTORIZATION_H

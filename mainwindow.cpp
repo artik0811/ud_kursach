@@ -65,7 +65,7 @@ void MainWindow::on_pushButton_7_clicked()
 {
     tableWindow = new Table();
     connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Бронь");
+    tableWindow->sett(this->db,"Бронь_оборудавния");
     tableWindow->show();
     this->close();
 
@@ -75,7 +75,7 @@ void MainWindow::on_pushButton_8_clicked()
 {
     tableWindow = new Table();
     connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Бронь_оборудавния");
+    tableWindow->sett(this->db,"Бронь");
     tableWindow->show();
     this->close();
 }

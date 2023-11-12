@@ -9,6 +9,8 @@ Autorization::Autorization(QWidget *parent) :
 
             //{"admin","admin"},{"guest","123"}
     logins.insert({"admin","admin"});
+    logins.insert({"guest","123"});
+    ui->label_2->setVisible(false);
 }
 
 Autorization::~Autorization()
@@ -41,10 +43,20 @@ bool Autorization::auth()
     }
 }
 
+bool flag = true;
+
 void Autorization::on_pushButton_clicked()
 {
-    if(auth())
-    {
-
-    }
+        if (auth())
+        {
+            flag = false;
+             m = new MainWindow();
+            m->show();
+            this->close();
+        }
+        else
+        {
+            ui->label_2->setVisible(true);
+            flag = true;
+        }
 }
