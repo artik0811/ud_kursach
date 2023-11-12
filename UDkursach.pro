@@ -12,6 +12,7 @@ SOURCES += \
     autorization.cpp \
     main.cpp \
     mainwindow.cpp \
+    registration.cpp \
     sqldb.cpp \
     table.cpp
 
@@ -19,12 +20,14 @@ HEADERS += \
     autorization.h \
     conf.h \
     mainwindow.h \
+    registration.h \
     sqldb.h \
     table.h
 
 FORMS += \
     autorization.ui \
     mainwindow.ui \
+    registration.ui \
     table.ui
 
 # Default rules for deployment.

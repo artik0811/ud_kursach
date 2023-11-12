@@ -1,15 +1,13 @@
 #include "autorization.h"
 #include "ui_autorization.h"
+#include <cstdlib>
+#include <QSqlError>
 
 Autorization::Autorization(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Autorization)
 {
     ui->setupUi(this);
-
-            //{"admin","admin"},{"guest","123"}
-    logins.insert({"admin","admin"});
-    logins.insert({"guest","123"});
     ui->label_2->setVisible(false);
 }
 
@@ -18,45 +16,46 @@ Autorization::~Autorization()
     delete ui;
 }
 
-bool Autorization::auth()
+void Autorization::auth()
 {
+   // std::cout << "1231231231231";
+    QSqlQuery query;
     QString login;
     QString password;
+    QString pdb;
     login = ui->lineEdit->text();
     password = ui->lineEdit_2->text();
-    std::map<QString,QString>::iterator iter;
-    for (auto lp = logins.begin();lp!=logins.end();++lp)
+    query.exec("SELECT * FROM dbo.Логин WHERE Phone =" + login);
+    if( query.first())
     {
-        if(login==lp->first)
-        {
-            if(password==lp->second)
-            {
-                return true;
-                break;
-            }
-            else
-                continue;
-        }
-        iter = lp;
-        if(lp == logins.end())
-            return false;
+        if(query.value(1).toString()==password)
+            flag = true;
+        else
+            flag = false;
     }
 }
 
-bool flag = true;
 
 void Autorization::on_pushButton_clicked()
 {
-        if (auth())
+    auth();
+        if (flag)
         {
-            flag = false;
-             m = new MainWindow();
+            m = new MainWindow();
             m->show();
             this->close();
         }
         else
         {
             ui->label_2->setVisible(true);
-            flag = true;
         }
+}
+
+void Autorization::on_pushButton_2_clicked()
+{
+        r = new Registration();
+        connect(r,&Registration::showAuth,this,&Autorization::show);
+        r->get_map(&logins);
+        r->show();
+        this->close();
 }

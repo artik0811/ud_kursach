@@ -4,12 +4,11 @@
 #include <map>
 int main(int argc, char *argv[])
 {
-
     QApplication a(argc, argv);
     Autorization aut;
     MainWindow w;
     aut.show();
-    if(aut.auth())
+    if(aut.flag)
         w.show();
     else
         aut.show();
