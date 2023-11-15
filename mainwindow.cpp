@@ -80,6 +80,13 @@ void MainWindow::on_pushButton_8_clicked()
     this->close();
 }
 
+void MainWindow::on_pushButton_9_clicked()
+{
+    pk = new PersonalAccount();
+    connect (pk,&PersonalAccount::showMain,this,&MainWindow::show);
+    pk->show();
+    this->close();
+}
 
 
 MainWindow::~MainWindow()

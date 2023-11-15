@@ -5,7 +5,7 @@
 #include "conf.h"
 #include "sqldb.h"
 #include <iostream>
-
+#include "personalaccount.h"
 #include "table.h"
 
 QT_BEGIN_NAMESPACE
@@ -30,10 +30,15 @@ private slots:
     void on_pushButton_6_clicked();
     void on_pushButton_7_clicked();
     void on_pushButton_8_clicked();
+    void on_pushButton_9_clicked();
+
+signals:
+    void showPK();
 
 private:
     Ui::Foto *ui;
     Table *tableWindow;
     SqlDB db;
+    PersonalAccount *pk;
 };
 #endif // MAINWINDOW_H

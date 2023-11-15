@@ -11,6 +11,7 @@ public:
     QSqlQuery *query;
     QSqlTableModel *model;
     SqlDB get(){return *this;};
+    inline static long long id;
 private:
 
 };

@@ -12,6 +12,7 @@ SOURCES += \
     autorization.cpp \
     main.cpp \
     mainwindow.cpp \
+    personalaccount.cpp \
     registration.cpp \
     sqldb.cpp \
     table.cpp
@@ -20,6 +21,7 @@ HEADERS += \
     autorization.h \
     conf.h \
     mainwindow.h \
+    personalaccount.h \
     registration.h \
     sqldb.h \
     table.h
@@ -27,6 +29,7 @@ HEADERS += \
 FORMS += \
     autorization.ui \
     mainwindow.ui \
+    personalaccount.ui \
     registration.ui \
     table.ui
 

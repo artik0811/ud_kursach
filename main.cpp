@@ -2,6 +2,8 @@
 #include "autorization.h"
 #include <QApplication>
 #include <map>
+
+namespace sess{int id;}
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

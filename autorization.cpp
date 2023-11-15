@@ -18,7 +18,6 @@ Autorization::~Autorization()
 
 void Autorization::auth()
 {
-   // std::cout << "1231231231231";
     QSqlQuery query;
     QString login;
     QString password;
@@ -29,7 +28,12 @@ void Autorization::auth()
     if( query.first())
     {
         if(query.value(1).toString()==password)
+        {
             flag = true;
+            QSqlQuery q("SELECT Код_Клиента FROM Клиент WHERE Телефон = " + login);
+            q.first();
+            SqlDB::id = q.value(0).toLongLong();
+        }
         else
             flag = false;
     }
@@ -55,7 +59,6 @@ void Autorization::on_pushButton_2_clicked()
 {
         r = new Registration();
         connect(r,&Registration::showAuth,this,&Autorization::show);
-        r->get_map(&logins);
         r->show();
         this->close();
 }

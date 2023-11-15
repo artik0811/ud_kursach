@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>570</width>
-    <height>515</height>
+    <width>254</width>
+    <height>328</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>350</y>
+     <x>80</x>
+     <y>230</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -29,7 +29,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>80</x>
      <y>10</y>
      <width>71</width>
      <height>16</height>
@@ -42,7 +42,7 @@
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>40</x>
      <y>80</y>
      <width>161</width>
      <height>31</height>
@@ -55,7 +55,7 @@
   <widget class="QLineEdit" name="lineEdit_2">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>40</x>
      <y>140</y>
      <width>161</width>
      <height>31</height>
@@ -71,16 +71,11 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>260</y>
-     <width>511</width>
-     <height>51</height>
+     <x>20</x>
+     <y>190</y>
+     <width>231</width>
+     <height>21</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
    </property>
    <property name="text">
     <string>Неправильно введен логин или пароль</string>
@@ -89,8 +84,8 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>350</y>
+     <x>80</x>
+     <y>270</y>
      <width>80</width>
      <height>24</height>
     </rect>

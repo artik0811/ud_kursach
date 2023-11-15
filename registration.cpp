@@ -45,10 +45,7 @@ void Registration::addMember()
         ui->label_7->setVisible(true);
 }
 
-void Registration::get_map(std::map<QString, QString> *gm)
-{
-    map = gm;
-}
+
 void Registration::on_pushButton_clicked()
 {
     addMember();

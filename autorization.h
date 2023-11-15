@@ -17,7 +17,6 @@ public:
     explicit Autorization(QWidget *parent = nullptr);
     ~Autorization();
     void auth();
-    std::map<QString,QString> logins;
     bool flag = false;
 
 signals:
