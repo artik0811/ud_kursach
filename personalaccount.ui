@@ -148,12 +148,12 @@
    </property>
    <item>
     <property name="text">
-     <string>Ж</string>
+     <string>ж</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>М</string>
+     <string>м</string>
     </property>
    </item>
   </widget>

@@ -58,8 +58,7 @@ void PersonalAccount::on_pushButton_2_clicked()
         sex = ui->comboBox->currentText();
         phone = ui->PhoneLine->text();
         mail = ui->MailLine->text();
-        qDebug() << fio << phone << mail << idd;
-        query.exec("UPDATE Клиент SET Фио = '" + fio + "', Телефон = " + phone + ", Почта = '" + mail + "' WHERE Код_Клиента = " + idd);
+        query.exec("UPDATE Клиент SET Фио = '" + fio + "', Телефон = " + phone + ", Почта = '" + mail + "', Пол = '" + sex + "' WHERE Код_Клиента = " + idd);
         qDebug() << query.lastError();
         ui->label_8->setVisible(true);
     }

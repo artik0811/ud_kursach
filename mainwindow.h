@@ -7,6 +7,7 @@
 #include <iostream>
 #include "personalaccount.h"
 #include "table.h"
+#include "bron.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Foto; }
@@ -40,5 +41,6 @@ private:
     Table *tableWindow;
     SqlDB db;
     PersonalAccount *pk;
+    bron *bronWin;
 };
 #endif // MAINWINDOW_H

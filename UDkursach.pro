@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     autorization.cpp \
+    bron.cpp \
     main.cpp \
     mainwindow.cpp \
     personalaccount.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     autorization.h \
+    bron.h \
     conf.h \
     mainwindow.h \
     personalaccount.h \
@@ -28,6 +30,7 @@ HEADERS += \
 
 FORMS += \
     autorization.ui \
+    bron.ui \
     mainwindow.ui \
     personalaccount.ui \
     registration.ui \
