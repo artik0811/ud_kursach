@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(50,50,50)</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
@@ -22,6 +25,19 @@
       <width>80</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
     </property>
     <property name="text">
      <string>Сотрудник</string>
@@ -36,6 +52,19 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
+    </property>
     <property name="text">
      <string>Клиент</string>
     </property>
@@ -48,6 +77,19 @@
       <width>80</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
     </property>
     <property name="text">
      <string>Заказ</string>
@@ -62,6 +104,19 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
+    </property>
     <property name="text">
      <string>Услуга</string>
     </property>
@@ -74,6 +129,19 @@
       <width>80</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
     </property>
     <property name="text">
      <string>Студия</string>
@@ -88,21 +156,21 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
+    </property>
     <property name="text">
      <string>Доп Обор</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_7">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>40</y>
-      <width>80</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Бронь Обор</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_8">
@@ -113,6 +181,19 @@
       <width>80</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
     </property>
     <property name="text">
      <string>Бронь</string>
@@ -126,6 +207,19 @@
       <width>111</width>
       <height>24</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
     </property>
     <property name="text">
      <string>Личный кабинет</string>

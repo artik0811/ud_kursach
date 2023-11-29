@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>297</width>
-    <height>384</height>
+    <width>1072</width>
+    <height>419</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,44 +16,59 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(50,50,50)</string>
+  </property>
   <widget class="QLineEdit" name="FioLine">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>90</y>
+     <x>130</x>
+     <y>100</y>
      <width>113</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
    </property>
   </widget>
   <widget class="QLineEdit" name="PhoneLine">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>130</y>
+     <x>130</x>
+     <y>140</y>
      <width>113</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
    </property>
   </widget>
   <widget class="QLineEdit" name="MailLine">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>170</y>
+     <x>130</x>
+     <y>180</y>
      <width>113</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>90</y>
+     <x>50</x>
+     <y>100</y>
      <width>49</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
    </property>
    <property name="text">
     <string>ФИО</string>
@@ -62,11 +77,14 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>130</y>
+     <x>50</x>
+     <y>140</y>
      <width>49</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
    </property>
    <property name="text">
     <string>Телефон</string>
@@ -75,11 +93,14 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>170</y>
+     <x>50</x>
+     <y>180</y>
      <width>49</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
    </property>
    <property name="text">
     <string>Почта</string>
@@ -88,11 +109,24 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>150</x>
-     <y>300</y>
+     <x>160</x>
+     <y>350</y>
      <width>80</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
    </property>
    <property name="text">
     <string>Назад</string>
@@ -101,11 +135,24 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>300</y>
+     <x>60</x>
+     <y>350</y>
      <width>80</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
    </property>
    <property name="text">
     <string>Сохранить</string>
@@ -120,6 +167,14 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
+   </property>
    <property name="text">
     <string>Личный Кабинет</string>
    </property>
@@ -127,11 +182,14 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>220</y>
+     <x>50</x>
+     <y>230</y>
      <width>49</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
    </property>
    <property name="text">
     <string>Пол</string>
@@ -140,11 +198,14 @@
   <widget class="QComboBox" name="comboBox">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>220</y>
+     <x>140</x>
+     <y>230</y>
      <width>72</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
    </property>
    <item>
     <property name="text">
@@ -160,11 +221,14 @@
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>260</y>
+     <x>100</x>
+     <y>280</y>
      <width>121</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
    </property>
    <property name="text">
     <string>Заполните все поля</string>
@@ -173,11 +237,14 @@
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>100</x>
+     <x>120</x>
      <y>60</y>
      <width>49</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
    </property>
    <property name="text">
     <string>ID:</string>
@@ -186,14 +253,112 @@
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>340</y>
-     <width>49</width>
+     <x>120</x>
+     <y>320</y>
+     <width>71</width>
      <height>16</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
+   </property>
    <property name="text">
-    <string>Ок</string>
+    <string>Сохранено</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>10</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
+   </property>
+   <property name="text">
+    <string>История заказов</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tableView">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>40</y>
+     <width>661</width>
+     <height>321</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QHeaderView {
+    background-color:  rgb(50,50,50);
+}
+QHeaderView::section:horizontal {
+    color: #fff;
+    background-color: rgb(50,50,50);
+ }
+ QTableView {
+    color:#fff;
+ }</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>379</x>
+     <y>380</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Заказы</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>380</y>
+     <width>91</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Бронирования</string>
    </property>
   </widget>
  </widget>

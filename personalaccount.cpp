@@ -28,6 +28,7 @@ PersonalAccount::PersonalAccount(QWidget *parent) :
         ui->comboBox->setCurrentIndex(1);
     else
         ui->comboBox->setCurrentIndex(0);
+
 }
 
 PersonalAccount::~PersonalAccount()
@@ -67,3 +68,29 @@ void PersonalAccount::on_pushButton_2_clicked()
         ui->label_6->setVisible(true);
     }
 }
+
+void PersonalAccount::on_pushButton_3_clicked()
+{
+    QSqlQuery query;
+    query.exec("SELECT z.Номер_Заказа AS [Номер Заказа],Название_Услуги as Услуга,Количество,Ссылка,Дата_Выполнения AS Дата,s.ФИО AS Сотрудник,Общая_Стоимость AS [Общая Стоимость] FROM Заказ AS z INNER JOIN Клиент AS k ON z.Код_Клиента = k.Код_Клиента INNER JOIN Услуга AS u ON z.Код_Услуги = u.Код_Услуги INNER JOIN Сотрудник AS s ON z.Сотрудник = s.Код_Сотрудника WHERE z.Код_Клиента = " + QString::fromStdString(std::to_string(SqlDB::id)));
+    QSqlQueryModel *model = new QSqlQueryModel();
+    model->setQuery(query);
+    ui->tableView->verticalHeader()->hide();
+    ui->tableView->setModel(model);
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->verticalHeader()->setDefaultSectionSize(ui->tableView->verticalHeader()->minimumSectionSize());
+}
+
+
+void PersonalAccount::on_pushButton_4_clicked()
+{
+    QSqlQuery query;
+    query.exec("select Номер_Брони, Время_Начала,Время_Конца, Номер_Студии, Статус, Дата from бронь where Код_Клиента= " + QString::fromStdString(std::to_string(SqlDB::id)));
+    QSqlQueryModel *model = new QSqlQueryModel();
+    model->setQuery(query);
+    ui->tableView->verticalHeader()->hide();
+    ui->tableView->setModel(model);
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->verticalHeader()->setDefaultSectionSize(ui->tableView->verticalHeader()->minimumSectionSize());
+}
+

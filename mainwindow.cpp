@@ -61,15 +61,6 @@ void MainWindow::on_pushButton_6_clicked()
     this->close();
 }
 
-void MainWindow::on_pushButton_7_clicked()
-{
-    tableWindow = new Table();
-    connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Бронь_оборудования");
-    tableWindow->show();
-    this->close();
-
-}
 
 void MainWindow::on_pushButton_8_clicked()
 {

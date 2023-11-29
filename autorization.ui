@@ -26,7 +26,17 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(179,170,170)</string>
+    <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
    </property>
    <property name="text">
     <string>Войти</string>
@@ -97,6 +107,9 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255)</string>
+   </property>
    <property name="text">
     <string>Неправильно введен логин или пароль</string>
    </property>
@@ -111,7 +124,17 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(170,170,170)</string>
+    <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
    </property>
    <property name="text">
     <string>Регистрация</string>

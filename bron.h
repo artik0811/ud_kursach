@@ -20,6 +20,7 @@ private:
     QDateTime  *d;
     bool isbisSextus(int x);
     QToolButton* func(int i);
+    bool verif_bron(QDate date,QTime time_start, QTime time_end, QString id_stud);
 
 signals:
     void showMain();
@@ -27,6 +28,9 @@ signals:
 private slots:
     void on_pushButton_clicked();
     void updateCal();
+    void on_pushButton_2_clicked();
+    void update_oborud();
+    void raschet();
 };
 
 #endif // BRON_H
