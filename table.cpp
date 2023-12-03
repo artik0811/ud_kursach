@@ -1,20 +1,39 @@
 #include "table.h"
 #include "ui_table.h"
-
+#include <QSqlError>
 Table::Table(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Table)
 {
     ui->setupUi(this);
+    ui->label_4->setVisible(false);
 }
 
-void Table::sett(SqlDB db,const QString t)
+void Table::sett(SqlDB db,const QString t, const QString q)
 {
-    db.query = new QSqlQuery(db.server);
+    table_name = t;
+    table_query = q;
     db.model = new QSqlTableModel (this,db.server);
-    db.model->setTable(t);
-    db.model->select();
+    db.model->setQuery(q);
+    if (t=="Сотрудник")
+    {
+        ui->label->setText("ФИО:");
+        ui->label_2->setText("Должность:");
+        ui->comboBox_2->setVisible(false);
+        QSize sz(113,24);
+        ui->lineEdit_2->size() = sz;
+    }
+    if (t != "Студия")
+    {
+        ui->comboBox->hide();
+        ui->label_3->hide();
+        ui->lineEdit_3->hide();
+    }
+    else flag_studia = true;
     ui->tableView->setModel(db.model);
+    ui->tableView->verticalHeader()->hide();
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->verticalHeader()->setDefaultSectionSize(ui->tableView->verticalHeader()->minimumSectionSize());
 }
 
 Table::~Table()
@@ -27,3 +46,70 @@ void Table::on_pushButton_clicked()
     this->close();
     emit showMain();
 }
+
+void Table::on_pushButton_2_clicked()
+{
+    if(ui->lineEdit->text()=="" && ui->lineEdit_2->text()=="")
+        ui->label_4->setVisible(true);
+    else
+    {
+        QString name = ui->lineEdit->text();
+        QString price = ui->lineEdit_2->text();
+        QString size = ui->lineEdit_3->text();
+        QString dolzh = price;
+        QString query;// Сотрудник СТудия Услуга Доп_Оборудование
+        if (table_name=="Сотрудник")
+        {
+            if(name!="" && dolzh=="")
+                query = "SELECT ФИО, Должность, Телефон FROM Сотрудник WHERE ФИО LIKE '%" + name + "%'";
+            else if (name=="" && dolzh !="")
+                query = "SELECT ФИО, Должность, Телефон FROM Сотрудник WHERE Должность LIKE '%" + dolzh + "%'";
+            else
+                query = "SELECT ФИО, Должность, Телефон FROM Сотрудник WHERE ФИО LIKE '%" + name + "%' AND ФИО LIKE '%" + name + "%'";
+        }
+        if (table_name == "Услуга")
+        {
+            QString sign = ui->comboBox_2->currentText(); // знаки равенства
+            if (name!="" && price =="")
+                query = "SELECT Название_Услуги as Название, Стоимость AS Цена FROM Услуга WHERE Название_Услуги LIKE '%" + name + "%'";
+            else if (name=="" && price !="")
+                query = "SELECT Название_Услуги as Название, Стоимость AS Цена FROM Услуга WHERE Стоимость " + sign + " " + price;
+            else
+                query = "SELECT Название_Услуги as Название, Стоимость AS Цена FROM Услуга WHERE Название_Услуги LIKE '%" + name + "%' AND Стоимость " + sign + " " + price;
+        }
+        if(table_name == "Доп_Оборудование")
+        {
+            QString sign = ui->comboBox_2->currentText();
+            if (name!="" && price =="")
+                query = "SELECT Название, Стоимость FROM Доп_Оборудование WHERE Название LIKE '%" + name + "%'";
+            else if (name=="" && price !="")
+                query = "SELECT Название, Стоимость FROM Доп_Оборудование WHERE Стоимость " + sign + " " + price;
+            else
+                query = "SELECT Название, Стоимость FROM Доп_Оборудование WHERE Название LIKE '%" + name + "%' AND Стоимость " + sign + " " + price;
+        }
+        qDebug() << query;
+        update_table(query);
+    }
+
+}
+
+void Table::update_table(QString qry)
+{
+    model = new QSqlTableModel();
+    model->setQuery(qry);
+    ui->tableView->setModel(model);
+    ui->tableView->verticalHeader()->hide();
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->verticalHeader()->setDefaultSectionSize(ui->tableView->verticalHeader()->minimumSectionSize());
+    qDebug() << model->lastError();
+}
+
+
+void Table::on_pushButton_3_clicked()
+{
+    update_table(table_query);
+    ui->lineEdit->setText("");
+    ui->lineEdit_2->setText("");
+    ui->lineEdit_3->setText("");
+}
+

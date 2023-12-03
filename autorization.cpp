@@ -9,6 +9,8 @@ Autorization::Autorization(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->label_2->setVisible(false);
+    ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+    connect(ui->radioButton,&QRadioButton::clicked,this,&Autorization::showPassword);
 }
 
 Autorization::~Autorization()
@@ -39,6 +41,14 @@ void Autorization::auth()
     }
 }
 
+void Autorization::showPassword()
+{
+    if(ui->lineEdit_2->echoMode() == QLineEdit::Password)
+        ui->lineEdit_2->setEchoMode(QLineEdit::Normal);
+    else
+        ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+}
+
 
 void Autorization::on_pushButton_clicked()
 {
@@ -46,8 +56,11 @@ void Autorization::on_pushButton_clicked()
         if (flag)
         {
             m = new MainWindow();
+            connect(m,&MainWindow::showAuth,this,&Autorization::show);
             m->show();
             this->close();
+            ui->lineEdit->setText("Логин");
+            ui->lineEdit_2->setText("Пароль");
         }
         else
         {
@@ -57,6 +70,8 @@ void Autorization::on_pushButton_clicked()
 
 void Autorization::on_pushButton_2_clicked()
 {
+        ui->lineEdit->setText("Логин");
+        ui->lineEdit_2->setText("Пароль");
         r = new Registration();
         connect(r,&Registration::showAuth,this,&Autorization::show);
         r->show();

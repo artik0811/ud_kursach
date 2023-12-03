@@ -1,6 +1,6 @@
 #ifndef TABLE_H
 #define TABLE_H
-
+#include <QValidator>
 #include <QDialog>
 #include "sqldb.h"
 
@@ -14,7 +14,7 @@ class Table : public QDialog
 
 public:
     explicit Table(QWidget *parent = nullptr);
-    void sett(SqlDB db,const QString t);
+    void sett(SqlDB db,const QString t,const QString q);
     ~Table();
 
 signals:
@@ -22,9 +22,20 @@ signals:
 
 private slots:
     void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_3_clicked();
 
 private:
     Ui::Table *ui;
+    bool flag_studia = false;
+    bool flag_sotr = false;
+    void update_table(QString qry);
+    QSqlTableModel *model;
+    QString table_name;
+    QString table_query;
+    QRegularExpressionValidator price;
+    QRegularExpressionValidator size;
 };
 
 #endif // TABLE_H

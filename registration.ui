@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>641</width>
-    <height>412</height>
+    <width>511</width>
+    <height>444</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
   <widget class="QLineEdit" name="loginEdit">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>200</x>
      <y>50</y>
      <width>113</width>
      <height>24</height>
@@ -32,8 +32,8 @@
   <widget class="QLineEdit" name="pass1Edit">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>100</y>
+     <x>200</x>
+     <y>250</y>
      <width>113</width>
      <height>24</height>
     </rect>
@@ -45,8 +45,8 @@
   <widget class="QLineEdit" name="passEdit2">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>150</y>
+     <x>200</x>
+     <y>300</y>
      <width>113</width>
      <height>24</height>
     </rect>
@@ -58,8 +58,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>240</y>
+     <x>100</x>
+     <y>360</y>
      <width>121</width>
      <height>24</height>
     </rect>
@@ -84,7 +84,7 @@ QPushButton:pressed {
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>210</x>
      <y>20</y>
      <width>101</width>
      <height>16</height>
@@ -100,8 +100,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>80</y>
+     <x>230</x>
+     <y>230</y>
      <width>49</width>
      <height>16</height>
     </rect>
@@ -116,9 +116,9 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>250</x>
-     <y>130</y>
-     <width>121</width>
+     <x>210</x>
+     <y>280</y>
+     <width>101</width>
      <height>16</height>
     </rect>
    </property>
@@ -132,8 +132,8 @@ QPushButton:pressed {
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>240</y>
+     <x>250</x>
+     <y>360</y>
      <width>121</width>
      <height>24</height>
     </rect>
@@ -158,7 +158,7 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>20</x>
      <y>50</y>
      <width>201</width>
      <height>16</height>
@@ -174,9 +174,9 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>150</y>
-     <width>151</width>
+     <x>70</x>
+     <y>300</y>
+     <width>121</width>
      <height>16</height>
     </rect>
    </property>
@@ -190,9 +190,9 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>300</y>
-     <width>261</width>
+     <x>150</x>
+     <y>420</y>
+     <width>181</width>
      <height>16</height>
     </rect>
    </property>
@@ -203,12 +203,109 @@ QPushButton:pressed {
     <string>Регистрация прошла успешно</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
+  <widget class="QLineEdit" name="lineEdit_mail">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>50</y>
-     <width>191</width>
+     <x>200</x>
+     <y>100</y>
+     <width>113</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255,255,255)</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>80</y>
+     <width>41</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255,255,255)</string>
+   </property>
+   <property name="text">
+    <string>Почта</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>150</y>
+     <width>113</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255,255,255)</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>130</y>
+     <width>31</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255,255,255)</string>
+   </property>
+   <property name="text">
+    <string>ФИО</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>200</y>
+     <width>111</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255,255,255)</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>Муж.</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Жен.</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>180</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255,255,255)</string>
+   </property>
+   <property name="text">
+    <string>Пол</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>150</y>
+     <width>121</width>
      <height>16</height>
     </rect>
    </property>
@@ -216,7 +313,7 @@ QPushButton:pressed {
     <string notr="true">color: rgb(255,255,255)</string>
    </property>
    <property name="text">
-    <string>Вводить можно только цифры!</string>
+    <string>Заполните все поля!</string>
    </property>
   </widget>
  </widget>

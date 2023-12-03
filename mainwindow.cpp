@@ -6,39 +6,31 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::Foto)
 {
     ui->setupUi(this);
-
+    QSqlQuery query;
+    query.exec("SELECT ФИО FROM Клиент WHERE Код_Клиента = " + QVariant(SqlDB::id).toString());
+    QString name;
+    while(query.next())
+         name = query.value(0).toString();
+    ui->label->setText("Добро пожаловать, " + name + "!");
+    qDebug() << query.lastError();
+    qDebug() << name;
 }
 
 void MainWindow::on_pushButton_clicked()
 {
     tableWindow = new Table();
     connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Сотрудник");
+    tableWindow->sett(this->db,"Сотрудник", "SELECT ФИО, Должность, Телефон FROM Сотрудник");
     tableWindow->show();
     this->close();
 }
-void MainWindow::on_pushButton_2_clicked()
-{
-    tableWindow = new Table();
-    connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Клиент");
-    tableWindow->show();
-    this->close();
-}
-void MainWindow::on_pushButton_3_clicked()
-{
-    tableWindow = new Table();
-    connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Заказ");
-    tableWindow->show();
-    this->close();
-}
+
 
 void MainWindow::on_pushButton_4_clicked()
 {
     tableWindow = new Table();
     connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Студия");
+    tableWindow->sett(this->db,"Студия", "SELECT Название_Студии as Название, Площадь, Адрес, Цена FROM Студия");
     tableWindow->show();
     this->close();
 }
@@ -47,7 +39,7 @@ void MainWindow::on_pushButton_5_clicked()
 {
     tableWindow = new Table();
     connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Услуга");
+    tableWindow->sett(this->db,"Услуга", "SELECT Название_Услуги as Название, Стоимость FROM Услуга");
     tableWindow->show();
     this->close();
 }
@@ -56,11 +48,10 @@ void MainWindow::on_pushButton_6_clicked()
 {
     tableWindow = new Table();
     connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Доп_Оборудование");
+    tableWindow->sett(this->db,"Доп_Оборудование", "SELECT Название, Стоимость FROM Доп_Оборудование");
     tableWindow->show();
     this->close();
 }
-
 
 void MainWindow::on_pushButton_8_clicked()
 {
@@ -84,4 +75,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    this->close();
+    emit showAuth();
+}
 

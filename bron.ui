@@ -794,7 +794,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>245</y>
+     <y>250</y>
      <width>118</width>
      <height>25</height>
     </rect>
@@ -1161,6 +1161,9 @@ QPushButton:pressed {
      <width>281</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(255,255,255)</string>
    </property>
    <property name="text">
     <string/>

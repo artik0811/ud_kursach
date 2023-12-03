@@ -8,7 +8,6 @@ PersonalAccount::PersonalAccount(QWidget *parent) :
     phone_valid(QRegularExpression("^\\d{11}$")),
     mail_valid(QRegularExpression("^[\\w-]+@([\\w-]+\\.)+[\\w-]+$")),
     fio_valid(QRegularExpression("^[A-Za-z|А-Яа-я]{1,}\\s[A-Z|А-Я][.][A-Z|А-Я][.]$"))
-    //fio_valid(QRegularExpression("^[A-Z|А-Я]{1}[A-Za-z 0-9-]{1,12}$"))
 {
     ui->setupUi(this);
     ui->PhoneLine->setValidator(&phone_valid);
