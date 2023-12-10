@@ -26,7 +26,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255,255,255)</string>
+    <string notr="true">QLineEdit
+{color:rgb(255,255,255)}</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="pass1Edit">
@@ -213,7 +214,8 @@ QPushButton:pressed {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(255,255,255)</string>
+    <string notr="true">QLineEdit
+{color:rgb(255,255,255)}</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
@@ -242,7 +244,8 @@ QPushButton:pressed {
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(255,255,255)</string>
+    <string notr="true">QLineEdit
+{color:rgb(255,255,255)}</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_9">

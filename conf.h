@@ -4,4 +4,5 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlTableModel>
+#include <QSqlError>
 #endif // CONF_H

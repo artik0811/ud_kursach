@@ -13,8 +13,9 @@ PersonalAccount::PersonalAccount(QWidget *parent) :
     ui->PhoneLine->setValidator(&phone_valid);
     ui->FioLine->setValidator(&fio_valid);
     ui->MailLine->setValidator(&mail_valid);
-    ui->FioLine->setToolTip("пр.: Иванов И.И.");
-    ui->PhoneLine->setToolTip("пр. 88005553535");
+    ui->FioLine->setToolTip("пример: Иванов И.И.");
+    ui->PhoneLine->setToolTip("пример: 88005553535");
+    ui->MailLine->setToolTip("пример: petyapupkin123@mail.ru");
     ui->label_6->setVisible(false);
     ui->label_8->setVisible(false);
     ui->label_7->setText("Ваш ID: " + QVariant(SqlDB::id).toString());
@@ -27,7 +28,6 @@ PersonalAccount::PersonalAccount(QWidget *parent) :
         ui->comboBox->setCurrentIndex(1);
     else
         ui->comboBox->setCurrentIndex(0);
-
 }
 
 PersonalAccount::~PersonalAccount()

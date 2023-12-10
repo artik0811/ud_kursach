@@ -11,30 +11,48 @@ CONFIG += c++17
 SOURCES += \
     autorization.cpp \
     bron.cpp \
+    journal_delete.cpp \
     main.cpp \
+    mainemployee.cpp \
     mainwindow.cpp \
     personalaccount.cpp \
     registration.cpp \
     sqldb.cpp \
-    table.cpp
+    table.cpp \
+    table_employee.cpp \
+    table_login.cpp \
+    table_sotrudnik.cpp \
+    table_usluga.cpp
 
 HEADERS += \
     autorization.h \
     bron.h \
     conf.h \
+    journal_delete.h \
+    mainemployee.h \
     mainwindow.h \
     personalaccount.h \
     registration.h \
     sqldb.h \
-    table.h
+    table.h \
+    table_employee.h \
+    table_login.h \
+    table_sotrudnik.h \
+    table_usluga.h
 
 FORMS += \
     autorization.ui \
     bron.ui \
+    journal_delete.ui \
+    mainemployee.ui \
     mainwindow.ui \
     personalaccount.ui \
     registration.ui \
-    table.ui
+    table.ui \
+    table_employee.ui \
+    table_login.ui \
+    table_sotrudnik.ui \
+    table_usluga.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

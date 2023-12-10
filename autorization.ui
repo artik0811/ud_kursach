@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>276</width>
-    <height>328</height>
+    <width>313</width>
+    <height>418</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>230</y>
+     <x>110</x>
+     <y>300</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -45,7 +45,7 @@ QPushButton:pressed {
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>100</x>
      <y>20</y>
      <width>121</width>
      <height>41</height>
@@ -66,8 +66,8 @@ QPushButton:pressed {
   <widget class="QLineEdit" name="lineEdit">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>80</y>
+     <x>80</x>
+     <y>100</y>
      <width>161</width>
      <height>31</height>
     </rect>
@@ -76,14 +76,14 @@ QPushButton:pressed {
     <string notr="true">color: rgb(255,255,255)</string>
    </property>
    <property name="text">
-    <string>Логин</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_2">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>130</y>
+     <x>80</x>
+     <y>170</y>
      <width>161</width>
      <height>31</height>
     </rect>
@@ -92,7 +92,7 @@ QPushButton:pressed {
     <string notr="true">color: rgb(255,255,255)</string>
    </property>
    <property name="text">
-    <string>Пароль</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -101,8 +101,8 @@ QPushButton:pressed {
    </property>
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>200</y>
+     <x>50</x>
+     <y>250</y>
      <width>231</width>
      <height>21</height>
     </rect>
@@ -117,8 +117,8 @@ QPushButton:pressed {
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>270</y>
+     <x>110</x>
+     <y>340</y>
      <width>80</width>
      <height>24</height>
     </rect>
@@ -143,8 +143,8 @@ QPushButton:pressed {
   <widget class="QRadioButton" name="radioButton">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>170</y>
+     <x>100</x>
+     <y>220</y>
      <width>131</width>
      <height>22</height>
     </rect>
@@ -154,6 +154,38 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>Показать пароль</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>70</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255)</string>
+   </property>
+   <property name="text">
+    <string>Номер телефона</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>150</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255)</string>
+   </property>
+   <property name="text">
+    <string>Пароль</string>
    </property>
   </widget>
  </widget>

@@ -12,8 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
     while(query.next())
          name = query.value(0).toString();
     ui->label->setText("Добро пожаловать, " + name + "!");
-    qDebug() << query.lastError();
-    qDebug() << name;
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -74,6 +72,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
 
 
 

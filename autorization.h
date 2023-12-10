@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "mainwindow.h"
 #include "registration.h"
+#include "mainemployee.h"
 
 namespace Ui {
 class Autorization;
@@ -16,8 +17,8 @@ class Autorization : public QDialog
 public:
     explicit Autorization(QWidget *parent = nullptr);
     ~Autorization();
-    void auth();
     bool flag = false;
+    QString role = "";
 
 signals:
     void showMain();
@@ -26,7 +27,9 @@ signals:
 private:
     Ui::Autorization *ui;
     MainWindow *m;
+    mainEmployee *mainEmployeeForm;
     Registration *r;
+    bool auth();
 
 private slots:
     void showPassword();

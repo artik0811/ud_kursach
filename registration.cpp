@@ -1,6 +1,5 @@
 #include "registration.h"
 #include "ui_registration.h"
-#include <QSqlError>
 Registration::Registration(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::registration),
@@ -16,6 +15,9 @@ Registration::Registration(QWidget *parent) :
     ui->lineEdit_mail->setValidator(&mail_valid);
     ui->lineEdit->setValidator(&fio_valid);
     ui->loginEdit->setValidator(&phone_valid);
+    ui->lineEdit_mail->setToolTip("пример: petyapupkin123@mail.ru");
+    ui->lineEdit->setToolTip("пример: Иванов И.И.");
+    ui->loginEdit->setToolTip("пример: 88005553535");
 }
 
 Registration::~Registration()
@@ -67,7 +69,6 @@ void Registration::on_pushButton_clicked()
     if(verif_member(l,p,p2,mail,fio,sex))
     {   //addclient @phone bigint,@pass varchar(100),@fio varchar(50),@mail varchar(30),@sex char(1)
         query.exec("EXEC addclient " + l + ",'" + p + "','" + fio + "','" + mail + "','" + sex + "'");
-        qDebug() << query.lastError();
         ui->label_6->setVisible(true);
     }
 }

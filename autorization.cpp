@@ -1,8 +1,7 @@
 #include "autorization.h"
 #include "ui_autorization.h"
 #include <cstdlib>
-#include <QSqlError>
-
+#include <QMessageBox>
 Autorization::Autorization(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Autorization)
@@ -18,7 +17,7 @@ Autorization::~Autorization()
     delete ui;
 }
 
-void Autorization::auth()
+bool Autorization::auth()
 {
     QSqlQuery query;
     QString login;
@@ -27,18 +26,38 @@ void Autorization::auth()
     login = ui->lineEdit->text();
     password = ui->lineEdit_2->text();
     query.exec("SELECT * FROM dbo.Логин WHERE Phone =" + login);
-    if( query.first())
+    query.first();
+    if(query.value(0).toString()==login) // первая строка ответа на запрос
     {
         if(query.value(1).toString()==password)
         {
-            flag = true;
+            QSqlQuery qrole("SELECT Role FROM Логин WHERE Phone = " + login);
+            qrole.first();
+            SqlDB::role = qrole.value(0).toString();
             QSqlQuery q("SELECT Код_Клиента FROM Клиент WHERE Телефон = " + login);
-            q.first();
-            SqlDB::id = q.value(0).toLongLong();
+            if(q.next())
+            {
+                SqlDB::id = q.value(0).toLongLong();
+                flag = true;
+                return true;
+            }
+            else
+            {
+                q.exec("SELECT Код_Сотрудника FROM Сотрудник WHERE Телефон = " + login);
+                q.first();
+                SqlDB::id = q.value(0).toLongLong();
+                flag = true;
+                return true;
+            }
         }
         else
+        {
             flag = false;
+            return false;
+        }
     }
+    else
+        return false;
 }
 
 void Autorization::showPassword()
@@ -52,20 +71,31 @@ void Autorization::showPassword()
 
 void Autorization::on_pushButton_clicked()
 {
-    auth();
-        if (flag)
+        if (auth())
         {
-            m = new MainWindow();
-            connect(m,&MainWindow::showAuth,this,&Autorization::show);
-            m->show();
-            this->close();
-            ui->lineEdit->setText("Логин");
-            ui->lineEdit_2->setText("Пароль");
+        if(SqlDB::role == "Employee" || SqlDB::role == "Admin")
+            {
+
+                mainEmployeeForm = new mainEmployee();
+                connect(mainEmployeeForm,&mainEmployee::showAuth,this,&Autorization::show);
+                mainEmployeeForm->show();
+                this->close();
+            }
+            else
+            {
+                m = new MainWindow();
+                connect(m,&MainWindow::showAuth,this,&Autorization::show);
+                m->show();
+                this->close();
+                ui->lineEdit->setText("Логин");
+                ui->lineEdit_2->setText("Пароль");
+            }
         }
         else
         {
             ui->label_2->setVisible(true);
         }
+        qDebug() << SqlDB::role;
 }
 
 void Autorization::on_pushButton_2_clicked()
@@ -77,3 +107,6 @@ void Autorization::on_pushButton_2_clicked()
         r->show();
         this->close();
 }
+
+
+

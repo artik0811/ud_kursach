@@ -1,12 +1,12 @@
 #include "table.h"
 #include "ui_table.h"
-#include <QSqlError>
 Table::Table(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Table)
 {
     ui->setupUi(this);
     ui->label_4->setVisible(false);
+    ui->tableView->setSortingEnabled(true);
 }
 
 void Table::sett(SqlDB db,const QString t, const QString q)
@@ -87,10 +87,15 @@ void Table::on_pushButton_2_clicked()
             else
                 query = "SELECT Название, Стоимость FROM Доп_Оборудование WHERE Название LIKE '%" + name + "%' AND Стоимость " + sign + " " + price;
         }
-        qDebug() << query;
         update_table(query);
     }
 
+}
+
+void Table::order()
+{
+    table_query += "ORDER BY Название";
+    update_table(table_query);
 }
 
 void Table::update_table(QString qry)
@@ -101,7 +106,6 @@ void Table::update_table(QString qry)
     ui->tableView->verticalHeader()->hide();
     ui->tableView->resizeColumnsToContents();
     ui->tableView->verticalHeader()->setDefaultSectionSize(ui->tableView->verticalHeader()->minimumSectionSize());
-    qDebug() << model->lastError();
 }
 
 

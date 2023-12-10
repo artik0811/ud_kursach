@@ -12,8 +12,7 @@ public:
     QSqlTableModel *model;
     SqlDB get(){return *this;};
     inline static long long id;
-private:
-
+    inline static QString role;
 };
 
 #endif // SQLDB_H
