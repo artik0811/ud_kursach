@@ -114,7 +114,7 @@ void bron::updateCal() //перерисовка графики
         {
             func(i)->setStyleSheet("background-color: green");
         }
-    q.exec("SELECT Время_Начала, Время_Конца FROM Бронь WHERE Номер_Студии = (SELECT Номер_Студии FROM Студия WHERE Название_Студии = '" + studio + "') AND Дата = '" + dt->date().toString("yyyy-MM-dd") + "' AND WHERE Статус <> 'Отменено'");
+    q.exec("SELECT Время_Начала, Время_Конца FROM Бронь WHERE Номер_Студии = (SELECT Номер_Студии FROM Студия WHERE Название_Студии = '" + studio + "') AND Дата = '" + dt->date().toString("yyyy-MM-dd") + "' AND Статус <> 'Отменено'");
     while(q.next())
     {
         start = q.value(0).toTime();
@@ -190,7 +190,9 @@ void bron::on_pushButton_2_clicked()
         query.bindValue(1,QString::fromStdString(std::to_string(SqlDB::id)));
     else
     {
-        QSqlQuery q("SELECT Код_Клиента FROM Клиент WHERE ФИО = " + ui->comboBox_3->currentText());
+        QSqlQuery q("SELECT Код_Клиента FROM Клиент WHERE ФИО = '" + ui->comboBox_3->currentText() + "'");
+        q.first();
+        qDebug() << q.lastQuery() << '\n' << q.lastError() << "     |" + q.value(0).toString();
         query.bindValue(1,q.value(0).toString());
     }
     query.bindValue(2,start.toString());
@@ -201,6 +203,8 @@ void bron::on_pushButton_2_clicked()
     query.exec();
     for(int i=0;i!=id_obor.size();i++)
     {
+        if(id_obor[i] == "0")
+            continue;
         query.exec("INSERT INTO Бронь_оборудования VALUES (" + QVariant(next_numbron).toString() + "," + id_obor[i] + ")");
         qDebug () << query.lastQuery() << '\n' << query.lastError();
     }
