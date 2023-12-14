@@ -49,7 +49,7 @@ void Table::on_pushButton_clicked()
 
 void Table::on_pushButton_2_clicked()
 {
-    if(ui->lineEdit->text()=="" && ui->lineEdit_2->text()=="")
+    if(ui->lineEdit->text()=="" && ui->lineEdit_2->text()=="" && ui->lineEdit_3->text() == "")
         ui->label_4->setVisible(true);
     else
     {
@@ -57,6 +57,7 @@ void Table::on_pushButton_2_clicked()
         QString price = ui->lineEdit_2->text();
         QString size = ui->lineEdit_3->text();
         QString dolzh = price;
+        QString sign_ploshad = ui->comboBox->currentText();
         QString query;// Сотрудник СТудия Услуга Доп_Оборудование
         if (table_name=="Сотрудник")
         {
@@ -87,7 +88,29 @@ void Table::on_pushButton_2_clicked()
             else
                 query = "SELECT Название, Стоимость FROM Доп_Оборудование WHERE Название LIKE '%" + name + "%' AND Стоимость " + sign + " " + price;
         }
+        if(table_name == "Студия")
+        {
+            query = "SELECT Название_Студии as Студия, Площадь, Адрес, Цена FROM Студия WHERE Название_Студии NOT LIKE '%(удалено)%'";
+            QString sign = ui->comboBox_2->currentText();
+            QVector <QString> filters,le;
+            filters.push_back(" Название_Студии LIKE '%" + name + "%' ");
+            filters.push_back(" Цена " + sign + price);
+            filters.push_back(" Площадь " + sign_ploshad + size);
+            le.push_back(name);
+            le.push_back(price);
+            le.push_back(size);
+            for (int i=0;i!=le.size();i++)
+            {
+                if (le[i] == "")
+                    continue;
+                else
+                {
+                    query += " AND " + filters[i];
+                }
+            }
+        }
         update_table(query);
+        qDebug() << query;
     }
 
 }

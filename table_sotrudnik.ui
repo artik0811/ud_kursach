@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Сотрудник</string>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
@@ -76,16 +76,6 @@
    </property>
    <property name="text">
     <string>ФИО</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>340</y>
-     <width>113</width>
-     <height>24</height>
-    </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_6">
@@ -251,6 +241,16 @@
      <x>30</x>
      <y>480</y>
      <width>211</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>340</y>
+     <width>111</width>
      <height>24</height>
     </rect>
    </property>

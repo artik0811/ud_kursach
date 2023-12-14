@@ -8,6 +8,12 @@
 #include "table_sotrudnik.h"
 #include "journal_delete.h"
 #include "table_login.h"
+#include "table_client.h"
+#include "table_zakaz.h"
+#include "table_dop_obor.h"
+#include "table_bron_obor.h"
+#include "table_brron.h"
+
 namespace Ui {
 class mainEmployee;
 }
@@ -33,6 +39,16 @@ private slots:
 
     void on_pushButton_5_clicked();
 
+    void on_pushButton_6_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_10_clicked();
+
 signals:
     void showAuth();
 
@@ -43,6 +59,11 @@ private:
     table_sotrudnik *table_sotr;
     journal_delete *journal;
     table_login *table_log;
+    table_client *table_clnt;
+    table_zakaz *table_zkz;
+    table_dop_obor *table_obor;
+    table_bron_obor *table_brbr;
+    table_brron *table_bron;
 };
 
 #endif // MAINEMPLOYEE_H

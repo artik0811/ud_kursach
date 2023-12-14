@@ -10,15 +10,16 @@ bron::bron(QWidget *parent) :
     ui->setupUi(this);
     d = new QDateTime(QDateTime::currentDateTime());
     ui->dateEdit->setDateTime(*d);
+    ui->dateEdit->setMinimumDateTime(QDateTime::currentDateTime());
     std::vector<QToolButton> bt;
     for(int i=0;i<24;i++)
         func(i)->setStyleSheet("background-color: green");
 
     QSqlQuery query;
-    query.exec("SELECT Название_Студии FROM Студия");
+    query.exec("SELECT Название_Студии FROM Студия WHERE Название_Студии NOT LIKE '%(удалено)%'");
     while(query.next())
         ui->comboBox->addItem(query.value(0).toString()); // Вытягиваем список студий в comboBox
-    query.exec("SELECT Название FROM Доп_Оборудование");
+    query.exec("SELECT Название FROM Доп_Оборудование WHERE Название NOT LIKE '%(удалено)%'");
     ui->comboBox_2->addItem("---");
     while(query.next())
         ui->comboBox_2->addItem(query.value(0).toString()); // Вытягиваем список оборудования в comboBox
@@ -32,6 +33,19 @@ bron::bron(QWidget *parent) :
     updateCal();
     QDate date = QDate::currentDate();
     ui->label_34->setText("0");
+    if(SqlDB::role !="Admin")
+    {
+        ui->comboBox_3->setVisible(false);
+        ui->label_40->setVisible(false);
+    }
+    else
+    {
+        query.exec("SELECT ФИО FROM Клиент WHERE ФИО NOT LIKE '%(удалено)%'");
+        while(query.next())
+        {
+            ui->comboBox_3->addItem(query.value(0).toString());
+        }
+    }
 }
 
 QToolButton* bron::func(int i)
@@ -100,7 +114,7 @@ void bron::updateCal() //перерисовка графики
         {
             func(i)->setStyleSheet("background-color: green");
         }
-    q.exec("SELECT Время_Начала, Время_Конца FROM Бронь WHERE Номер_Студии = (SELECT Номер_Студии FROM Студия WHERE Название_Студии = '" + studio + "') AND Дата = '" + dt->date().toString("yyyy-MM-dd") + "'");
+    q.exec("SELECT Время_Начала, Время_Конца FROM Бронь WHERE Номер_Студии = (SELECT Номер_Студии FROM Студия WHERE Название_Студии = '" + studio + "') AND Дата = '" + dt->date().toString("yyyy-MM-dd") + "' AND WHERE Статус <> 'Отменено'");
     while(q.next())
     {
         start = q.value(0).toTime();
@@ -145,26 +159,52 @@ void bron::on_pushButton_2_clicked()
     QString status = "Не Завершен";
     QString numobr;
     QString id_stud;
-    if(ui->comboBox_2->currentText()!="---") // если выбрано оборудование
+    if(!verif_bron(date,start,end,id_stud))
     {
-        query.exec("SELECT Код_Оборудования FROM Доп_Оборудование WHERE Название = '" + ui->comboBox_2->currentText() + "'");
-        while(query.next())
-            numobr = query.value(0).toString();
+        ui->label_39->setText("Ошибка! Введите корректную дату или время");
+        return;
     }
-    else numobr = "0";
+    QVector <QString> id_obor;
+    if(ui->listWidget->count() > 0) // если выбрано оборудование
+    {
+        for(int i =0;i!=ui->listWidget->count();i++)
+        {
+            query.exec("SELECT Код_Оборудования FROM Доп_Оборудование WHERE Название = '" + ui->listWidget->item(i)->text() + "'");
+            while(query.next())
+                numobr = query.value(0).toString();
+            id_obor.push_back(numobr);
+        }
+    }
+    else
+        id_obor.push_back("0");
     query.exec("SELECT Номер_Студии FROM Студия WHERE Название_Студии = '" + ui->comboBox->currentText() + "'");
     while(query.next())
         id_stud = query.value(0).toString();
-    if(verif_bron(date,start,end,id_stud))
-    {
-        query.exec("EXEC addbron " + numobr + "," + QString::fromStdString(std::to_string(SqlDB::id)) + ",'" + start.toString() + "','" +
-end.toString() + "'," + id_stud + ",'Не Завершен','" + date.toString("yyyy-MM-dd") +"'");
-        ui->label_39->setText("Успешно");
-    }
+    int next_numbron;
+    query.exec("select next value for NumBron");
+    query.first();
+    next_numbron = query.value(0).toInt();
+    query.prepare("insert into Бронь values (?,?,?,?,?,?,?)");
+    query.bindValue(0,QVariant(next_numbron).toString());
+    if(SqlDB::role == "Client")
+        query.bindValue(1,QString::fromStdString(std::to_string(SqlDB::id)));
     else
     {
-        ui->label_39->setText("Ошибка! Введите корректную дату или время");
+        QSqlQuery q("SELECT Код_Клиента FROM Клиент WHERE ФИО = " + ui->comboBox_3->currentText());
+        query.bindValue(1,q.value(0).toString());
     }
+    query.bindValue(2,start.toString());
+    query.bindValue(3,end.toString());
+    query.bindValue(4,id_stud);
+    query.bindValue(5,"Не Завершен");
+    query.bindValue(6,date.toString("yyyy-MM-dd"));
+    query.exec();
+    for(int i=0;i!=id_obor.size();i++)
+    {
+        query.exec("INSERT INTO Бронь_оборудования VALUES (" + QVariant(next_numbron).toString() + "," + id_obor[i] + ")");
+        qDebug () << query.lastQuery() << '\n' << query.lastError();
+    }
+    ui->label_39->setText("Успешно");
     updateCal();
 }
 
@@ -191,10 +231,16 @@ void bron::raschet() //предварительный расчет
     int stud_price,oborud_price;
     stud_price = ui->label_33->text().toInt();
     oborud_price = ui->label_34->text().toInt();
-
-    int stud_itog,obor_itog;
+    int x = ui->listWidget->count();
+    int stud_itog,obor_itog = 0;
+    for(int i=0;i!=x;i++)
+    {
+        QSqlQuery query("SELECT Стоимость FROM Доп_Оборудование WHERE Название = '" + ui->listWidget->item(i)->text() + "'");
+        query.first();
+        oborud_price = query.value(0).toInt();
+        obor_itog += count_hours*oborud_price;
+    }
     stud_itog = count_hours*stud_price;
-    obor_itog = count_hours*oborud_price;
     std::string price;
     price = std::to_string(stud_itog);
     ui->sumstud_label->setText("Студия: " +QString::fromStdString(price) + " р.");
@@ -202,4 +248,21 @@ void bron::raschet() //предварительный расчет
     ui->sumobor_label->setText("Оборудование: " +QString::fromStdString(price) + " р.");
     ui->sumitog_label->setText("Итого: " + QString::fromStdString(std::to_string(obor_itog+stud_itog)));
 }
+
+
+void bron::on_comboBox_2_currentTextChanged(const QString &arg1)
+{
+    QString item = ui->comboBox_2->currentText();
+    if(item!="---")
+    {
+        ui->listWidget->addItem(item);
+    }
+}
+
+void bron::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
+{
+    delete item;
+    raschet();
+}
+
 

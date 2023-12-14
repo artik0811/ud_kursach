@@ -9,6 +9,11 @@ mainEmployee::mainEmployee(QWidget *parent) :
     ui->label_2->setText("Ваш ID: " + QVariant(SqlDB::id).toString());
     if(SqlDB::role == "Admin")
         ui->label->setText("Администратор");
+    if(SqlDB::role == "Employee")
+    {
+        ui->pushButton_11->setVisible(false);
+        ui->pushButton_5->setVisible(false);
+    }
 }
 
 mainEmployee::~mainEmployee()
@@ -63,6 +68,51 @@ void mainEmployee::on_pushButton_5_clicked()
     table_log = new table_login();
     connect(table_log,&table_login::showMain,this,&mainEmployee::show);
     table_log->show();
+    this->close();
+}
+
+
+void mainEmployee::on_pushButton_6_clicked()
+{
+    table_clnt = new table_client();
+    connect(table_clnt,&table_client::showMain,this,&mainEmployee::show);
+    table_clnt->show();
+    this->close();
+}
+
+
+void mainEmployee::on_pushButton_7_clicked()
+{
+    table_zkz = new table_zakaz();
+    connect (table_zkz,&table_zakaz::showMain,this,&mainEmployee::show);
+    table_zkz->show();
+    this->close();
+}
+
+
+void mainEmployee::on_pushButton_8_clicked()
+{
+    table_obor = new table_dop_obor();
+    connect(table_obor,&table_dop_obor::showMain,this,&mainEmployee::show);
+    table_obor->show();
+    this->close();
+}
+
+
+void mainEmployee::on_pushButton_9_clicked()
+{
+    table_brbr = new table_bron_obor();
+    connect(table_brbr,&table_bron_obor::showMain,this,&mainEmployee::show);
+    table_brbr->show();
+    this->close();
+}
+
+
+void mainEmployee::on_pushButton_10_clicked()
+{
+    table_bron = new table_brron();
+    connect(table_bron,&table_brron::showMain,this,&mainEmployee::show);
+    table_bron->show();
     this->close();
 }
 

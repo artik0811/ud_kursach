@@ -9,7 +9,7 @@ table_employee::table_employee(QWidget *parent) :
     ui(new Ui::table_employee),
     id_valid(QRegularExpression("^\\d{15}$")),
     ploshad_valid(QRegularExpression("^\\d{1,}\\,{1}\\d{2}$")),
-    price_valid(QRegularExpression("^\\d{10}$"))
+    price_valid(QRegularExpression("^\\d{7}$"))
 {
     ui->setupUi(this);
     QSqlQuery query("SELECT * FROM Студия WHERE Название_Студии not like '%удалено%'");

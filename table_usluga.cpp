@@ -4,8 +4,8 @@
 table_usluga::table_usluga(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::table_usluga),
-    id_valid(QRegularExpression("^\\d{15}$")),
-    price_valid(QRegularExpression("^\\d{10}$"))
+    id_valid(QRegularExpression("^\\d{7}$")),
+    price_valid(QRegularExpression("^\\d{7}$"))
 {
     ui->setupUi(this);
     QSqlQuery query("SELECT * FROM Услуга where Название_Услуги not like '%удалено%'");

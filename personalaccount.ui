@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Личный кабинет</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -19,20 +19,6 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(50,50,50)</string>
   </property>
-  <widget class="QLineEdit" name="FioLine">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>100</y>
-     <width>113</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLineEdit
-{color: rgb(255,255,255) }</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="PhoneLine">
    <property name="geometry">
     <rect>
@@ -198,29 +184,6 @@ QPushButton:pressed {
     <string>Пол</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>230</y>
-     <width>72</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255,255,255) </string>
-   </property>
-   <item>
-    <property name="text">
-     <string>ж</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>м</string>
-    </property>
-   </item>
-  </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
@@ -362,6 +325,94 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>Бронирования</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>100</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>230</y>
+     <width>121</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_otmena">
+   <property name="geometry">
+    <rect>
+     <x>950</x>
+     <y>380</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{padding:4px;
+    color: #fff;
+    border-radius: 2px;
+    border: 1px solid #000000;
+    background-color: rgb(170,170,170);
+}
+QPushButton:pressed {
+    color: #111;
+    background: #fff;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Отменить</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>380</y>
+     <width>113</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit
+{color: rgb(255,255,255) }</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>720</x>
+     <y>380</y>
+     <width>81</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255,255,255) </string>
+   </property>
+   <property name="text">
+    <string>Номер брони:</string>
    </property>
   </widget>
  </widget>

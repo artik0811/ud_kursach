@@ -22,12 +22,8 @@ signals:
 
 private slots:
     void on_backButton_clicked();
-
     void on_findButton_clicked();
-
     void on_pushButton_clicked();
-
-
     void on_changeButton_clicked();
 
 private:
@@ -37,6 +33,8 @@ private:
     void reset_table();
     void reset_lineedits();
     QRegularExpressionValidator phone_valid;
+    QRegularExpressionValidator mail_valid;
+    QRegularExpressionValidator fio_valid;
 };
 
 #endif // TABLE_LOGIN_H

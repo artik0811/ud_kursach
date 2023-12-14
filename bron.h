@@ -3,6 +3,7 @@
 #include <QToolButton>
 #include <QDialog>
 #include "sqldb.h"
+#include <QListWidget>
 namespace Ui {
 class bron;
 }
@@ -31,6 +32,8 @@ private slots:
     void on_pushButton_2_clicked();
     void update_oborud();
     void raschet();
+    void on_comboBox_2_currentTextChanged(const QString &arg1);
+    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
 };
 
 #endif // BRON_H

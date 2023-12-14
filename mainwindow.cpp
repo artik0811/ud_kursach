@@ -18,7 +18,7 @@ void MainWindow::on_pushButton_clicked()
 {
     tableWindow = new Table();
     connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Сотрудник", "SELECT ФИО, Должность, Телефон FROM Сотрудник");
+    tableWindow->sett(this->db,"Сотрудник", "SELECT ФИО, Должность, Телефон FROM Сотрудник WHERE ФИО NOT LIKE '%(удалено)%'");
     tableWindow->show();
     this->close();
 }
@@ -28,7 +28,7 @@ void MainWindow::on_pushButton_4_clicked()
 {
     tableWindow = new Table();
     connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Студия", "SELECT Название_Студии as Название, Площадь, Адрес, Цена FROM Студия");
+    tableWindow->sett(this->db,"Студия", "SELECT Название_Студии as Название, Площадь, Адрес, Цена FROM Студия WHERE Название_Студии NOT LIKE '%(удалено)%'");
     tableWindow->show();
     this->close();
 }
@@ -37,7 +37,7 @@ void MainWindow::on_pushButton_5_clicked()
 {
     tableWindow = new Table();
     connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Услуга", "SELECT Название_Услуги as Название, Стоимость FROM Услуга");
+    tableWindow->sett(this->db,"Услуга", "SELECT Название_Услуги as Название, Стоимость FROM Услуга WHERE Название_Услуги NOT LIKE '%(удалено)%'");
     tableWindow->show();
     this->close();
 }
@@ -46,7 +46,7 @@ void MainWindow::on_pushButton_6_clicked()
 {
     tableWindow = new Table();
     connect(tableWindow,&Table::showMain,this,&MainWindow::show);
-    tableWindow->sett(this->db,"Доп_Оборудование", "SELECT Название, Стоимость FROM Доп_Оборудование");
+    tableWindow->sett(this->db,"Доп_Оборудование", "SELECT Название, Стоимость FROM Доп_Оборудование WHERE Название NOT LIKE '%(удалено)%'");
     tableWindow->show();
     this->close();
 }

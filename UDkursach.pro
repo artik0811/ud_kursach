@@ -19,10 +19,15 @@ SOURCES += \
     registration.cpp \
     sqldb.cpp \
     table.cpp \
+    table_bron_obor.cpp \
+    table_brron.cpp \
+    table_client.cpp \
+    table_dop_obor.cpp \
     table_employee.cpp \
     table_login.cpp \
     table_sotrudnik.cpp \
-    table_usluga.cpp
+    table_usluga.cpp \
+    table_zakaz.cpp
 
 HEADERS += \
     autorization.h \
@@ -35,10 +40,15 @@ HEADERS += \
     registration.h \
     sqldb.h \
     table.h \
+    table_bron_obor.h \
+    table_brron.h \
+    table_client.h \
+    table_dop_obor.h \
     table_employee.h \
     table_login.h \
     table_sotrudnik.h \
-    table_usluga.h
+    table_usluga.h \
+    table_zakaz.h
 
 FORMS += \
     autorization.ui \
@@ -49,10 +59,15 @@ FORMS += \
     personalaccount.ui \
     registration.ui \
     table.ui \
+    table_bron_obor.ui \
+    table_brron.ui \
+    table_client.ui \
+    table_dop_obor.ui \
     table_employee.ui \
     table_login.ui \
     table_sotrudnik.ui \
-    table_usluga.ui
+    table_usluga.ui \
+    table_zakaz.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

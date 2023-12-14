@@ -15,6 +15,8 @@ table_login::table_login(QWidget *parent) :
     ui->tableView->verticalHeader()->hide();
     ui->tableView->resizeColumnsToContents();
     ui->tableView->verticalHeader()->setDefaultSectionSize(ui->tableView->verticalHeader()->minimumSectionSize());
+    if(SqlDB::role != "Admin")
+        ui->changeButton->hide(); // скрытие кнопки изменить для не админов
     ui->lineEdit_login->setValidator(&phone_valid);
 }
 

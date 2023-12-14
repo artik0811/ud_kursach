@@ -4,8 +4,8 @@
 table_sotrudnik::table_sotrudnik(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::table_sotrudnik),
-    phone_valid(QRegularExpression("^\\d{15}$")),
-    id_valid(QRegularExpression("^\\d{15}$"))
+    phone_valid(QRegularExpression("^\\d{13}$")),
+    id_valid(QRegularExpression("^\\d{7}$"))
 {
     ui->setupUi(this);
     QSqlQuery query("SELECT * FROM Сотрудник WHERE ФИО not like '%удалено%'");
@@ -17,12 +17,20 @@ table_sotrudnik::table_sotrudnik(QWidget *parent) :
     ui->tableView->verticalHeader()->setDefaultSectionSize(ui->tableView->verticalHeader()->minimumSectionSize());
     ui->lineEdit->setValidator(&id_valid);
     ui->lineEdit_5->setValidator(&id_valid);
+    query.exec("SELECT DISTINCT Должность FROM Сотрудник");
+    ui->comboBox->addItem("---");
+    while(query.next())
+    {
+        ui->comboBox->addItem(query.value(0).toString());
+    }
+
     if(SqlDB::role == "Employee")
     {
         ui->pushButton_5->hide();
         ui->pushButton_2->hide();
         ui->pushButton_4->hide();
     }
+    ui->dateEdit->setDate(QDate::currentDate());
 }
 
 table_sotrudnik::~table_sotrudnik()
@@ -61,16 +69,15 @@ void table_sotrudnik::reset_lineedits()
 {
     ui->lineEdit->setText("");
     ui->lineEdit_2->setText("");
-    ui->lineEdit_4->setText("");
+    ui->comboBox->setCurrentIndex(0);
     ui->lineEdit_5->setText("");
+    ui->lineEdit_3->setText("");
 }
 
 bool table_sotrudnik::isHaveMember(QString phone) // проверка имеется ли пользователь с этим номером
 {
     QSqlQuery query("SELECT Phone FROM Логин WHERE Phone = " + phone);
     QSqlQuery query2("SELECT Телефон FROM Сотрудник WHERE Телефон = " + phone);
-//    qDebug() << query.lastQuery() << '\n' << query.lastError();
-//    qDebug() << query2.lastQuery() << '\n' << query.lastError();
     query.first();
     query2.first();
     qDebug() << query2.value(0).toString() << '\n' << query.value(0).toString();
@@ -98,24 +105,28 @@ void table_sotrudnik::on_pushButton_6_clicked() // сброс
 void table_sotrudnik::on_pushButton_3_clicked() // поиск
 {
     QString fio = ui->lineEdit_2->text();
-    QString dolzh= ui->lineEdit_4->text();
+    QString dolzh= ui->comboBox->currentText();
     QString id= ui->lineEdit->text();
     QString phone= ui->lineEdit_5->text();
     QString date = ui->dateEdit->date().toString("yyyy-MM-dd");
     QString qry = "SELECT * FROM Сотрудник WHERE ";
-    QVector <QString> filters;
+    QVector <QString> filters,v1;
     filters.push_back("Код_Сотрудника = " + id);
     filters.push_back("ФИО LIKE '%" +fio + "%'");
-    filters.push_back("Должность LIKE '%" +dolzh + "%'");
     filters.push_back("Телефон = " + phone);
     if(ui->checkBox->isChecked())
+    {
         filters.push_back("Дата_приема = " + date);
-    QVector <QString> v1;
+        v1.push_back(date);
+    }
     v1.push_back(id);
     v1.push_back(fio);
-    v1.push_back(dolzh);
     v1.push_back(phone);
-    v1.push_back(date);
+    if(dolzh != "---")
+    {
+        v1.push_back(dolzh);
+        filters.push_back("Должность = '" + dolzh + "'");
+    }
     int k =0;
     bool flag = false;
     for(int i=0;i!=filters.size();i++)
@@ -163,7 +174,7 @@ void table_sotrudnik::on_pushButton_5_clicked() // удаление
 void table_sotrudnik::on_pushButton_4_clicked() // изменение
 {
     QString fio = ui->lineEdit_2->text();
-    QString dolzh= ui->lineEdit_4->text();
+    QString dolzh= ui->comboBox->currentText();
     QString id= ui->lineEdit->text();
     QString phone= ui->lineEdit_5->text();
     QString date = ui->dateEdit->date().toString("yyyy-MM-dd");
@@ -171,10 +182,13 @@ void table_sotrudnik::on_pushButton_4_clicked() // изменение
     QString qry = "UPDATE Сотрудник SET ";
     QVector <QString> v2,v1;
     v1.push_back("ФИО = '" + fio + "' ");
-    v1.push_back("Должность = '" + dolzh + "' ");
+    if(dolzh!="---")
+    {
+        v1.push_back("Должность = '" + dolzh + "' ");
+        v2.push_back(dolzh);
+    }
     v1.push_back("Телефон = " + phone + " ");
     v2.push_back(fio);
-    v2.push_back(dolzh);
     v2.push_back(phone);
     if(check_date)
     {
@@ -212,7 +226,7 @@ void table_sotrudnik::on_pushButton_4_clicked() // изменение
 void table_sotrudnik::on_pushButton_2_clicked() // добавление
 {
     QString fio = ui->lineEdit_2->text();
-    QString dolzh= ui->lineEdit_4->text();
+    QString dolzh= ui->comboBox->currentText();
     QString id= ui->lineEdit->text();
     QString phone= ui->lineEdit_5->text();
     QString password = ui->lineEdit_3->text();
