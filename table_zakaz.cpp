@@ -209,6 +209,11 @@ void table_zakaz::on_pushButton_add_clicked() // добавление
     QString sum = ui->lineEdit_sum_price->text();
     QString link = ui->lineEdit_link->text();
     QString date = ui->dateEdit_first->date().toString("yyyy-MM-dd");
+    if (ui->dateEdit_first->date() != QDate::currentDate())
+    {
+        QMessageBox::warning(this,"Ошибка","Заказ можно оформить только на сегодняшнюю дату!");
+        return;
+    }
     if(count == "" || sum == "")
     {
         QMessageBox::warning(this,"Ошибка","Поля Количество и Стоимость должны быть заполнены!");
