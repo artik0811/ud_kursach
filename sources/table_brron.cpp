@@ -1,4 +1,4 @@
-#include "table_brron.h"
+#include "includes/table_brron.h"
 #include "ui_table_brron.h"
 
 table_brron::table_brron(QWidget *parent) :

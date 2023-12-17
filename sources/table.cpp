@@ -1,4 +1,4 @@
-#include "table.h"
+#include "includes/table.h"
 #include "ui_table.h"
 Table::Table(QWidget *parent) :
     QDialog(parent),

@@ -1,4 +1,4 @@
-#include "table_usluga.h"
+#include "includes/table_usluga.h"
 #include "ui_table_usluga.h"
 #include <QSqlError>
 table_usluga::table_usluga(QWidget *parent) :

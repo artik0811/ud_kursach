@@ -1,6 +1,6 @@
-#include "table_sotrudnik.h"
+#include "includes/table_sotrudnik.h"
 #include "ui_table_sotrudnik.h"
-#include "sqldb.h"
+#include "includes/sqldb.h"
 table_sotrudnik::table_sotrudnik(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::table_sotrudnik),

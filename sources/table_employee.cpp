@@ -1,9 +1,9 @@
-#include "table_employee.h"
+#include "includes/table_employee.h"
 #include "ui_table_employee.h"
 #include <QModelIndex>
 #include <QSqlError>
 #include <QMessageBox>
-#include "sqldb.h"
+#include "includes/sqldb.h"
 table_employee::table_employee(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::table_employee),

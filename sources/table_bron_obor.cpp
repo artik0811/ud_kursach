@@ -1,4 +1,4 @@
-#include "table_bron_obor.h"
+#include "includes/table_bron_obor.h"
 #include "ui_table_bron_obor.h"
 
 table_bron_obor::table_bron_obor(QWidget *parent) :

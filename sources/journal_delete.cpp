@@ -1,4 +1,4 @@
-#include "journal_delete.h"
+#include "includes/journal_delete.h"
 #include "ui_journal_delete.h"
 #include <QSqlError>
 journal_delete::journal_delete(QWidget *parent) :

@@ -1,4 +1,4 @@
-#include "table_zakaz.h"
+#include "includes/table_zakaz.h"
 #include "ui_table_zakaz.h"
 
 table_zakaz::table_zakaz(QWidget *parent) :

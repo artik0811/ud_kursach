@@ -1,6 +1,6 @@
-#include "mainemployee.h"
+#include "includes/mainemployee.h"
 #include "ui_mainemployee.h"
-#include "sqldb.h"
+#include "includes/sqldb.h"
 mainEmployee::mainEmployee(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::mainEmployee)

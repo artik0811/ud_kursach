@@ -1,5 +1,5 @@
 #include "includes/autorization.h"
-#include "forms/ui_autorization.h"
+#include "ui_autorization.h"
 #include <cstdlib>
 #include <QMessageBox>
 Autorization::Autorization(QWidget *parent) :

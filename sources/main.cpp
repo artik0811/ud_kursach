@@ -1,7 +1,6 @@
-#include "mainwindow.h"
-#include "autorization.h"
+#include "includes/mainwindow.h"
+#include "includes/autorization.h"
 #include <QApplication>
-#include <map>
 #include <QFile>
 int main(int argc, char *argv[])
 {

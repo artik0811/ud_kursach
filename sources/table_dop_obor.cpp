@@ -1,4 +1,4 @@
-#include "table_dop_obor.h"
+#include "includes/table_dop_obor.h"
 #include "ui_table_dop_obor.h"
 
 table_dop_obor::table_dop_obor(QWidget *parent) :
